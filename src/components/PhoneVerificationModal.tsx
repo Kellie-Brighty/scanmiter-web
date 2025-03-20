@@ -1,6 +1,10 @@
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { XMarkIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
+import {
+  XMarkIcon,
+  ArrowRightIcon,
+  CheckCircleIcon,
+} from "@heroicons/react/24/outline";
 
 interface PhoneVerificationModalProps {
   isOpen: boolean;
@@ -89,14 +93,35 @@ export default function PhoneVerificationModal({
 
                 <div className="sm:flex sm:items-start">
                   <div className="mt-3 text-center sm:mt-0 sm:text-left w-full">
-                    <Dialog.Title
-                      as="h3"
-                      className="text-xl font-semibold leading-6 text-gray-900 mb-8"
-                    >
-                      {step === "phone"
-                        ? "Enter Your Phone Number"
-                        : "Verify Phone Number"}
+                    <Dialog.Title className="text-2xl font-semibold text-primary mb-6">
+                      {step === "phone" ? "Verify Your Phone" : "Enter Code"}
                     </Dialog.Title>
+
+                    {/* New Information Section */}
+                    <div className="mb-8 bg-blue-50 p-4 rounded-lg">
+                      <h3 className="text-lg font-semibold text-blue-800 mb-2">
+                        Quick & Secure Payments
+                      </h3>
+                      <p className="text-blue-700 text-sm">
+                        Verify your phone number to start making payments
+                        instantly. You'll be able to scan any merchant's QR code
+                        and pay directly from your bank account.
+                      </p>
+                      <ul className="mt-3 space-y-2 text-sm text-blue-700">
+                        <li className="flex items-center gap-2">
+                          <CheckCircleIcon className="w-5 h-5 text-blue-500" />
+                          One-time verification
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <CheckCircleIcon className="w-5 h-5 text-blue-500" />
+                          Secure bank integration
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <CheckCircleIcon className="w-5 h-5 text-blue-500" />
+                          Instant payment confirmation
+                        </li>
+                      </ul>
+                    </div>
 
                     {step === "phone" ? (
                       <form
