@@ -13,6 +13,8 @@ import {
   BuildingLibraryIcon,
   ClockIcon,
   ArrowPathIcon,
+  SparklesIcon,
+  BuildingStorefrontIcon,
 } from "@heroicons/react/24/outline";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
@@ -126,17 +128,26 @@ const App = () => {
             <div className="hidden md:flex items-center space-x-8">
               <a
                 href="#features"
-                className="text-primary hover:text-primary/80"
+                className="text-primary hover:text-primary/80 transition-colors"
               >
                 Features
               </a>
               <a
+                href="#use-cases"
+                className="text-primary hover:text-primary/80 transition-colors"
+              >
+                Use Cases
+              </a>
+              <a
                 href="#how-it-works"
-                className="text-primary hover:text-primary/80"
+                className="text-primary hover:text-primary/80 transition-colors"
               >
                 How it works
               </a>
-              <a href="#contact" className="text-primary hover:text-primary/80">
+              <a
+                href="#contact"
+                className="text-primary hover:text-primary/80 transition-colors"
+              >
                 Contact
               </a>
             </div>
@@ -155,33 +166,89 @@ const App = () => {
           </div>
 
           {/* Mobile Navigation */}
-          {isMenuOpen && (
-            <div className="md:hidden pt-4 pb-3">
-              <div className="flex flex-col space-y-4">
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{
+              height: isMenuOpen ? "auto" : 0,
+              opacity: isMenuOpen ? 1 : 0,
+            }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden overflow-hidden"
+          >
+            <div className="py-4 space-y-6">
+              <motion.div
+                initial={{ x: -20, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 0.1 }}
+                className="group"
+              >
                 <a
                   href="#features"
-                  className="text-primary hover:text-primary/80"
+                  className="flex items-center space-x-2 text-primary hover:text-primary/80 transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Features
+                  <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                    <SparklesIcon className="w-5 h-5" />
+                  </div>
+                  <span>Features</span>
                 </a>
+              </motion.div>
+
+              <motion.div
+                initial={{ x: -20, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                className="group"
+              >
+                <a
+                  href="#use-cases"
+                  className="flex items-center space-x-2 text-primary hover:text-primary/80 transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                    <BuildingStorefrontIcon className="w-5 h-5" />
+                  </div>
+                  <span>Use Cases</span>
+                </a>
+              </motion.div>
+
+              <motion.div
+                initial={{ x: -20, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 0.3 }}
+                className="group"
+              >
                 <a
                   href="#how-it-works"
-                  className="text-primary hover:text-primary/80"
+                  className="flex items-center space-x-2 text-primary hover:text-primary/80 transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  How it works
+                  <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                    <QueueListIcon className="w-5 h-5" />
+                  </div>
+                  <span>How it works</span>
                 </a>
+              </motion.div>
+
+              <motion.div
+                initial={{ x: -20, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 0.4 }}
+                className="group"
+              >
                 <a
                   href="#contact"
-                  className="text-primary hover:text-primary/80"
+                  className="flex items-center space-x-2 text-primary hover:text-primary/80 transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Contact
+                  <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                    <EnvelopeIcon className="w-5 h-5" />
+                  </div>
+                  <span>Contact</span>
                 </a>
-              </div>
+              </motion.div>
             </div>
-          )}
+          </motion.div>
         </div>
       </nav>
 
@@ -468,7 +535,10 @@ const App = () => {
       </section>
 
       {/* Informal Sector Section */}
-      <section className="py-16 bg-gradient-to-br from-gray-50 via-white to-primary/5 overflow-hidden">
+      <section
+        id="use-cases"
+        className="py-24 bg-gradient-to-br from-gray-50 via-white to-primary/5 overflow-hidden"
+      >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
